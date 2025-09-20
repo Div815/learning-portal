@@ -1,25 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 
 const LoginPage = () => {
     const { login } = useAuth();
+    const [isLoginView, setIsLoginView] = useState(true);
 
     const handleLogin = (e) => {
         e.preventDefault();
-        // Here you would normally handle form validation, etc.
+        // In a real app, you would validate the user's credentials
+        console.log('Logging in...');
         login();
+    };
+
+    const handleSignUp = (e) => {
+        e.preventDefault();
+        // In a real app, you would register the new user and then log them in
+        console.log('Signing up and logging in...');
+        login(); // Simulate auto-login after sign-up
     };
 
     return (
         <div className="login-container">
             <div className="login-box">
-                <h1>Welcome Back!</h1>
-                <p>Sign in to continue</p>
-                <form onSubmit={handleLogin}>
-                    <input type="email" placeholder="Email" required />
-                    <input type="password" placeholder="Password" required />
-                    <button type="submit">Login</button>
-                </form>
+                <div className="view-toggle">
+                    <button 
+                        onClick={() => setIsLoginView(true)} 
+                        className={isLoginView ? 'active' : ''}
+                    >
+                        Login
+                    </button>
+                    <button 
+                        onClick={() => setIsLoginView(false)} 
+                        className={!isLoginView ? 'active' : ''}
+                    >
+                        Sign Up
+                    </button>
+                </div>
+
+                {isLoginView ? (
+                    <>
+                        <h1>Welcome Back!</h1>
+                        <p>Sign in to continue</p>
+                        <form onSubmit={handleLogin}>
+                            <input type="email" placeholder="Email" required />
+                            <input type="password" placeholder="Password" required />
+                            <button type="submit">Login</button>
+                        </form>
+                    </>
+                ) : (
+                    <>
+                        <h1>Create Account</h1>
+                        <p>Get started with your learning journey</p>
+                        <form onSubmit={handleSignUp}>
+                            <input type="text" placeholder="Full Name" required />
+                            <input type="email" placeholder="Email" required />
+                            <input type="password" placeholder="Password" required />
+                            <button type="submit">Sign Up</button>
+                        </form>
+                    </>
+                )}
             </div>
         </div>
     );
