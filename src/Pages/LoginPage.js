@@ -19,49 +19,49 @@ const LoginPage = () => {
         login(); // Simulate auto-login after sign-up
     };
 
-    return (
-        <div className="login-container">
-            <div className="login-box">
-                <div className="view-toggle">
-                    <button 
-                        onClick={() => setIsLoginView(true)} 
-                        className={isLoginView ? 'active' : ''}
-                    >
-                        Login
-                    </button>
-                    <button 
-                        onClick={() => setIsLoginView(false)} 
-                        className={!isLoginView ? 'active' : ''}
-                    >
-                        Sign Up
-                    </button>
-                </div>
+   return (
+    <div className="login-container">
+        <h1>Welcome to our learning platform!</h1>
 
-                {isLoginView ? (
-                    <>
-                        <h1>Welcome Back!</h1>
-                        <p>Sign in to continue</p>
-                        <form onSubmit={handleLogin}>
-                            <input type="email" placeholder="Email" required />
-                            <input type="password" placeholder="Password" required />
-                            <button type="submit">Login</button>
-                        </form>
-                    </>
-                ) : (
-                    <>
-                        <h1>Create Account</h1>
-                        <p>Get started with your learning journey</p>
-                        <form onSubmit={handleSignUp}>
-                            <input type="text" placeholder="Full Name" required />
-                            <input type="email" placeholder="Email" required />
-                            <input type="password" placeholder="Password" required />
-                            <button type="submit">Sign Up</button>
-                        </form>
-                    </>
-                )}
+        <div className="login-box">
+            <div className="view-toggle">
+                <button
+                    onClick={() => setIsLoginView(true)}
+                    className={isLoginView ? 'active' : ''}
+                >
+                    Login
+                </button>
+                <button
+                    onClick={() => setIsLoginView(false)}
+                    className={!isLoginView ? 'active' : ''}
+                >
+                    Sign Up
+                </button>
             </div>
+
+            {isLoginView ? (
+                <>
+                    <p>Login to continue</p>
+                    <form onSubmit={handleLogin}>
+                        <input type="email" placeholder="Email" required />
+                        <input type="password" placeholder="Password" required />
+                        <button type="submit">Login</button>
+                    </form>
+                </>
+            ) : (
+                <>
+                    <p>Get started with your learning journey</p>
+                    <form onSubmit={handleSignUp}>
+                        <input type="text" placeholder="Full Name" required />
+                        <input type="email" placeholder="Email" required />
+                        <input type="password" placeholder="Password" required />
+                        <button type="submit">Sign Up</button>
+                    </form>
+                </>
+            )}
         </div>
-    );
+    </div>
+);
 };
 
 export default LoginPage;
