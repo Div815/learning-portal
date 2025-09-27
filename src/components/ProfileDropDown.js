@@ -10,7 +10,7 @@ const ProfileDropdown = () => {
             <ul>
                 <li><Link to="/profile">My Profile</Link></li>
                 <li><Link to="/dashboard">Dashboard</Link></li>
-                <li className="separator"></li>
+                
                 <li><button onClick={logout}>Sign Out</button></li>
             </ul>
         </div>

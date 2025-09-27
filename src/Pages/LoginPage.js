@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 const LoginPage = () => {
     const { login } = useAuth();
     const [isLoginView, setIsLoginView] = useState(true);
+   
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -18,6 +19,7 @@ const LoginPage = () => {
         console.log('Signing up and logging in...');
         login(); // Simulate auto-login after sign-up
     };
+   
 
    return (
     <div className="login-container">
